@@ -9,10 +9,11 @@ import { errorHandler } from './middlewares/errorHandler.js';
 import userRouter from './routers/users.js';
 import contactsRouter from './routers/contactsRouter.js';
 import checkToken from './middlewares/checkToken.js';
+import { redirectUrl } from './constants/index.js';
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: `${redirectUrl}`, credentials: true }));
 app.use(express.json());
 
 app.use(express.static('public'));
